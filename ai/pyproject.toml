@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "surgeguard-ai"
+version = "0.1.0"
+description = "SurgeGuard AI Pipeline - transforms CCTV frames into structured crowd intelligence."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+
+# ---------------------------------------------------------------------------
+# The AI Pipeline is an INDEPENDENT package (07:99-103).
+# It must never depend on the backend, the database, or the frontend.
+# Its only outward interface is `surgeguard_ai.sinks.AnalysisSink`.
+# ---------------------------------------------------------------------------
+dependencies = [
+    "pydantic>=2.7,<3",
+    "numpy>=1.26,<3",
+    "opencv-python>=4.10,<5",
+    # Person detection (YOLO) and tracking (ByteTrack). Ultralytics pulls in
+    # torch; install the CUDA build first to get GPU inference:
+    #   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+    # Without it the platform still runs - inference falls back to CPU and the
+    # detector reports the fallback rather than taking it silently.
+    "ultralytics>=8.3,<9",
+    "torch>=2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["surgeguard_ai"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "model: needs the detection model weights (downloaded on first run)",
+]

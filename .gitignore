@@ -1,0 +1,57 @@
+# --- Secrets and local configuration -------------------------------------
+.env
+.env.*
+!.env.example
+*.local
+
+# --- Runtime data (created by the running system, never committed) -------
+# The database, camera registry, zones, topology, models and clips are
+# machine-specific. Model weights download on first use into data/models/.
+*.db
+*.db-shm
+*.db-wal
+*.sqlite3
+data/*
+!data/.gitkeep
+scripts/logs/
+scripts/STOP_SURGEGUARD
+
+# --- Private session notes (contain local credentials and addresses) -----
+HANDOFF.md
+SURGEGUARD_CONTEXT.md
+.remember/
+.claude/
+
+# --- Python ---------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+
+# --- Node / frontend ------------------------------------------------------
+node_modules/
+dist/
+coverage/
+
+# --- Model weights and media ---------------------------------------------
+*.pt
+*.onnx
+*.engine
+*.mp4
+*.avi
+*.mkv
+
+# --- OS / editors ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

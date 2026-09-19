@@ -1,0 +1,6 @@
+# Integration tests - Phase 2.
+#
+#   API contract tests against the OpenAPI schema.
+#   WebSocket: connect -> snapshot -> sequence continuity -> forced
+#   disconnect -> resync.
+#   Ingest path: AnalysisResult in, Crowd Event and broadcast out.

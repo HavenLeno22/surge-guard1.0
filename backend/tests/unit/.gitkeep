@@ -1,0 +1,8 @@
+# Unit tests - Phase 2.
+#
+#   Event lifecycle state machine - open, escalate, de-escalate, close,
+#   with hysteresis. The single most important thing to test in the backend:
+#   an off-by-one in the escalation counters produces alert flapping that only
+#   appears under load.
+#   Outbox worker retry behaviour.
+#   Repository queries against an in-memory database.

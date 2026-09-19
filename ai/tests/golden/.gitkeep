@@ -1,0 +1,15 @@
+# Golden-clip regression - Phase 2.
+#
+# A fixed clip is run through the complete pipeline and its CSI curve compared
+# against a recorded expected trajectory within tolerance.
+#
+# This is what makes the Crowd Stability Index testable at all. Without it,
+# "the CSI looks right" is a judgement made once, by one person, on one clip -
+# and any later change to a weight or a normalisation silently invalidates it.
+#
+# It works because frame timestamps derive from seq/fps rather than the wall
+# clock: an unpaced offline run produces the identical curve the live
+# demonstration produces (see VideoFileSource).
+#
+# Run this before freezing the CSI weights, and again after any change to
+# them. Never tune weights during a rehearsal.

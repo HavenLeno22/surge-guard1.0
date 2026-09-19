@@ -1,0 +1,11 @@
+# Migration scripts live here.
+#
+# The first migration is Phase 2 work: it is blocked on the event model
+# decision (Architecture Review C3), and writing it against the documented
+# Crowd Event shape would guarantee a rewrite.
+#
+# Generate with:
+#   alembic revision --autogenerate -m "describe the change"
+#
+# Always read a generated migration before applying it. Autogeneration detects
+# most schema changes but not all - notably it will not infer a data migration.
